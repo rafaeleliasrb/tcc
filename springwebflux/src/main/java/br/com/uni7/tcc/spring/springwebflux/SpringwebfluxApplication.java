@@ -38,7 +38,7 @@ public class SpringwebfluxApplication {
  
 				Mono<User> data = userRepository.save(user);
  
-				data.subscribe(e -> System.out.println(e.toString())
+				data.subscribe(e -> {}
 						, Throwable::printStackTrace);
 			}
 		};
