@@ -29,7 +29,9 @@ public class SpringmvcApplication {
  
 			Random generator = new Random();
 			for (int i = 1; i <= 1000; i++) {
-				User user= new User("User"+i, generator.nextInt(80));
+				User user= new User();
+				user.setName("User"+i);
+				user.setAge(generator.nextInt(80));
 				userRepository.save(user);
 			}
 			

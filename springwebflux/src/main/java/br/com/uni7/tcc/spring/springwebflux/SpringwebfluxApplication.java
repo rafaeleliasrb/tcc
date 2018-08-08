@@ -34,9 +34,12 @@ public class SpringwebfluxApplication {
  
 			Random generator = new Random();
 			for (int i = 1; i <= 1000; i++) {
-				User user= new User("User"+i, generator.nextInt(80));
+				User user= new User();
+				user.setId(Long.valueOf(i));
+				user.setName("User"+i);
+				user.setAge(generator.nextInt(80));
  
-				Mono<User> data = userRepository.save(user);
+				Mono<User> data = userRepository.insert(user);
  
 				data.subscribe(e -> {}
 						, Throwable::printStackTrace);

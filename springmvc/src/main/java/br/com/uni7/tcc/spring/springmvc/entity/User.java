@@ -8,7 +8,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 import lombok.Data;
-import lombok.NonNull;
 
 @Data
 @Entity(name="Users")
@@ -18,8 +17,8 @@ public class User implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	private int id;
-	@NonNull private String name;
-	@NonNull private Integer age;
+	private Long id;
+	private String name;
+	private Integer age;
 
 }
