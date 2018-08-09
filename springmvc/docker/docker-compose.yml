@@ -10,18 +10,9 @@ services:
       MYSQL_DATABASE: springdb
       MYSQL-USER: springuser
       MYSQL_PASSWORD: springuser12345
+    networks:
+      - spring_net
   
-  phpmyadmin:
-    image: phpmyadmin/phpmyadmin
-    links:
-      - db:db
-    environment:
-      MYSQL_ROOT_PASSWORD: springuser12345
-      MYSQL_DATABASE: springdb
-      MYSQL_USER: springuser
-      MYSQL_PASSWORD: springuser12345
-    ports:
-        - "8081:80"
   docker-webapp:
     image: rafaelelias/springmvc:0.0.1
     depends_on:
@@ -34,3 +25,9 @@ services:
       DATABASE_PASSWORD: springuser12345
       DATABASE_NAME: springdb
       DATABASE_PORT: 3306
+    networks:
+      - spring_net
+      
+networks:
+  spring_net:
+    driver: bridge
