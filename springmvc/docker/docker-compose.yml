@@ -1,30 +1,11 @@
 version: '3'
 
 services:
-  db:
-    image: mysql:5.7
-    ports: 
-      - "3306:3306"
-    environment:
-      MYSQL_ROOT_PASSWORD: springuser12345
-      MYSQL_DATABASE: springdb
-      MYSQL-USER: springuser
-      MYSQL_PASSWORD: springuser12345
-    networks:
-      - spring_net
   
   docker-webapp:
     image: rafaelelias/springmvc:0.0.1
-    depends_on:
-      - db
     ports:
       - "8080:8080"
-    environment:
-      DATABASE_HOST: db
-      DATABASE_USER: springuser
-      DATABASE_PASSWORD: springuser12345
-      DATABASE_NAME: springdb
-      DATABASE_PORT: 3306
     networks:
       - spring_net
       

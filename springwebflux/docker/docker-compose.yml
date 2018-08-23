@@ -1,25 +1,9 @@
 version: '3'
 
 services:
-  db:
-    image: mongo:3.6
-    ports:
-      - '27017:27017'
-    environment:
-      - MONGODB_DATABASE=springdb
-    networks:
-      - spring_net
       
   docker-webapp:
     image: rafaelelias/springwebflux:0.0.1
-    links:
-      - db:db
-    environment:
-      - MONGODB_HOST=db
-      - MONGODB_PORT=27017
-      - MONGODB_DATABASE=springdb
-    depends_on:
-      - db
     networks:
       - spring_net
     ports:

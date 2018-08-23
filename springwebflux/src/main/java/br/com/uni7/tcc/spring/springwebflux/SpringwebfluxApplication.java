@@ -9,14 +9,16 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
 import br.com.uni7.tcc.spring.springwebflux.entity.User;
-import br.com.uni7.tcc.spring.springwebflux.repository.UserRepository;
-import reactor.core.publisher.Mono;
+import br.com.uni7.tcc.spring.springwebflux.repository.UserInMemoryRepository;
 
 @SpringBootApplication
 public class SpringwebfluxApplication {
 
+	/*@Autowired
+	private UserRepository userRepository;*/
+	
 	@Autowired
-	private UserRepository userRepository;
+	private UserInMemoryRepository userInMemoryRepository;
 	
 	public static void main(String[] args) {
 		SpringApplication.run(SpringwebfluxApplication.class, args);
@@ -26,11 +28,11 @@ public class SpringwebfluxApplication {
 	CommandLineRunner runner() {
 		return args -> {
  
-			Mono<Void> deleteAll = userRepository.deleteAll();
+			//Mono<Void> deleteAll = userRepository.deleteAll();
  
-			deleteAll.subscribe(e -> {
+			/*deleteAll.subscribe(e -> {
  
-			}, Throwable::printStackTrace);
+			}, Throwable::printStackTrace);*/
  
 			Random generator = new Random();
 			for (int i = 1; i <= 1000; i++) {
@@ -38,11 +40,12 @@ public class SpringwebfluxApplication {
 				user.setId(Long.valueOf(i));
 				user.setName("User"+i);
 				user.setAge(generator.nextInt(80));
- 
-				Mono<User> data = userRepository.insert(user);
+				
+				userInMemoryRepository.save(user);
+				/*Mono<User> data = userRepository.insert(user);
  
 				data.subscribe(e -> {}
-						, Throwable::printStackTrace);
+						, Throwable::printStackTrace);*/
 			}
 		};
 	}	

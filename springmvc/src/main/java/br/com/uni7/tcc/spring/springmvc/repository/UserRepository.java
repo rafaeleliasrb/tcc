@@ -1,9 +1,5 @@
 package br.com.uni7.tcc.spring.springmvc.repository;
 
-import org.springframework.data.repository.CrudRepository;
+/*public interface UserRepository extends CrudRepository<User, Integer> {
 
-import br.com.uni7.tcc.spring.springmvc.entity.User;
-
-public interface UserRepository extends CrudRepository<User, Integer> {
-
-}
+}*/
