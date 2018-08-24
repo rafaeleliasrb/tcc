@@ -3,13 +3,16 @@ version: '3'
 services:
   db:
     image: mysql:5.7
+    expose:
+      - "3306"
     ports: 
       - "3306:3306"
     environment:
-      MYSQL_ROOT_PASSWORD: springuser12345
-      MYSQL_DATABASE: springdb
-      MYSQL-USER: springuser
-      MYSQL_PASSWORD: springuser12345
+      - MYSQL_ROOT_PASSWORD=springuser12345
+      - MYSQL_DATABASE=springdb
+      - MYSQL-USER=springuser
+      - MYSQL_PASSWORD=springuser12345
+      - MYSQL_HOST=
     networks:
       - spring_net
   
