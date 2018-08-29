@@ -10,6 +10,7 @@ import org.springframework.context.annotation.Bean;
 
 import br.com.uni7.tcc.spring.springwebflux.entity.User;
 import br.com.uni7.tcc.spring.springwebflux.repository.UserInMemoryRepository;
+import reactor.core.publisher.Mono;
 
 @SpringBootApplication
 public class SpringwebfluxApplication {
@@ -28,12 +29,6 @@ public class SpringwebfluxApplication {
 	CommandLineRunner runner() {
 		return args -> {
  
-			//Mono<Void> deleteAll = userRepository.deleteAll();
- 
-			/*deleteAll.subscribe(e -> {
- 
-			}, Throwable::printStackTrace);*/
- 
 			Random generator = new Random();
 			for (int i = 1; i <= 1000; i++) {
 				User user= new User();
@@ -41,11 +36,10 @@ public class SpringwebfluxApplication {
 				user.setName("User"+i);
 				user.setAge(generator.nextInt(80));
 				
-				userInMemoryRepository.save(user);
-				/*Mono<User> data = userRepository.insert(user);
+				Mono<Void> data = userInMemoryRepository.save(user);
  
 				data.subscribe(e -> {}
-						, Throwable::printStackTrace);*/
+						, Throwable::printStackTrace);
 			}
 		};
 	}	

@@ -15,17 +15,9 @@ import reactor.core.publisher.Flux;
 @RequestMapping("/users")
 public class UserController {
  
-	/*@Autowired
-	private UserRepository userRepository;*/
-	
 	@Autowired
 	private UserInMemoryRepository userInMemoryRepository;
 	
-	/*@GetMapping
-    public Flux<User> getAllUser() {
-        return userRepository.findAll();
-    }*/
-
 	@GetMapping("/{delay}")
     public @ResponseBody Flux<User> getAllUserInMemory(@PathVariable long delay) {
 		return userInMemoryRepository.findAll(delay);
