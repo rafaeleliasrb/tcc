@@ -14,9 +14,6 @@ import br.com.uni7.tcc.spring.springmvc.repository.UserInMemoryRepository;
 @SpringBootApplication
 public class SpringmvcApplication {
 
-	/*@Autowired
-	private UserRepository userRepository;*/
-	
 	@Autowired
 	private UserInMemoryRepository userInMemoryRepository;
 	
@@ -28,8 +25,6 @@ public class SpringmvcApplication {
 	CommandLineRunner runner(){
 		return args -> {
 			 
-			//userRepository.deleteAll();
- 
 			Random generator = new Random();
 			for (int i = 1; i <= 1000; i++) {
 				User user= new User();
@@ -38,7 +33,6 @@ public class SpringmvcApplication {
 				user.setAge(generator.nextInt(80));
 				userInMemoryRepository.save(user);
 			}
-			
 		};
 	}
 }

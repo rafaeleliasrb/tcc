@@ -15,9 +15,6 @@ import reactor.core.publisher.Mono;
 @SpringBootApplication
 public class SpringwebfluxApplication {
 
-	/*@Autowired
-	private UserRepository userRepository;*/
-	
 	@Autowired
 	private UserInMemoryRepository userInMemoryRepository;
 	

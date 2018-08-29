@@ -14,16 +14,8 @@ import br.com.uni7.tcc.spring.springmvc.repository.UserInMemoryRepository;
 @RequestMapping("/users")
 public class UserController {
 	
-	/*@Autowired
-	private UserRepository userRepository;*/
-
 	@Autowired
 	private UserInMemoryRepository userInMemoryRepository;
-	
-	/*@GetMapping
-    public @ResponseBody Iterable<User> getAllUser() {
-		return userRepository.findAll();
-    }*/
 	
 	@GetMapping("/{delay}")
     public @ResponseBody Iterable<User> getAllUserInMemory(@PathVariable long delay) {
